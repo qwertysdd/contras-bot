@@ -1,0 +1,20 @@
+name: Deploy to Replit
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Replit
+        uses: replit/replit-action@v1
+        with:
+          repl_id: ${{ secrets.REPLIT_REPL_ID }}
+          api_key: ${{ secrets.REPLIT_API_KEY }}
